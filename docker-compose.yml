@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo-cont
+    ports:
+      - '27016:27017'
+    networks:
+      - fs-app
+    
+  backend:
+    build: ./backend
+    container_name: node-app-cont
+    ports:
+      - '8001:8000'
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/ums
+    networks:
+      - fs-app
+
+  frontend:
+    build: ./frontend
+    container_name: react-app-cont
+    ports:
+      - '3001:3000'
+    environment:
+    - REACT_APP_API_URL=http://localhost:8001
+    networks:
+      - fs-app
+    
+networks:
+  fs-app:
+    driver: bridge
