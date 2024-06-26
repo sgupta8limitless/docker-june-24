@@ -1,0 +1,106 @@
+to pull a image from docker hub
+-- docker pull imagename:version
+
+to view images in engine
+-- docker images
+
+to run/create a container from an image
+--docker run imagename/imageid
+
+to create a container with custom_name
+--docker run --name=somename imagename
+
+to create a container/run in detached mode
+--docker run -d imagename
+
+to pass env varibales to cont
+--docker run -e var=value imagename
+
+to run a container with port forwarding
+--docker run -p hostport:contport imagename
+
+to see logs of a container
+--docker logs contname/contid
+
+to see all info about container
+--docker inspect contname/containerid
+
+to connect to container terminal
+--docker exec -it contname/contid sh
+
+to start/stop the cont
+--docker start/stop contname/contid
+
+to delete a cont
+--docker rm contname/contid
+
+to see all running containers
+--docker ps
+
+to see all container
+--docker ps -a
+
+
+
+
+
+
+
+our commands for final day
+
+
+
+docker run --name mongo-cont -p 27016:27017 mongo
+
+
+docker run --network fs-app --name react-app-cont -d -p 3001:3000 -e REACT_APP_API_URL=http://localhost:8001 react-app-img
+
+
+
+docker run --network fs-app --name node-app-cont -d -p 8001:8000 -e MONGO_URL=mongodb://mongo-cont:27017/ums node-app-img
+
+
+
+
+1. Creating a network
+2. pulled a image for mongo
+3.created images for node and react
+4.created containers for node , react and mongo
+
+
+
+docker compose
+
+create multiple images at once
+and to run multiple container at once
+by just one command
+
+
+to build images and run containers
+--docker compose up --build
+
+
+to only run containers
+--docker compose up
+
+to run containers in detached mode
+--docker compose up -d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
